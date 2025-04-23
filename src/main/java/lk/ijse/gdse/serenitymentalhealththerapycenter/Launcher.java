@@ -14,7 +14,7 @@ public class Launcher extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginPage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-//        stage.getIcons().add(new Image(getClass().getResourceAsStream("/pictures/logo.jpg.png"))); // Open wenakota logo eka penweemt.
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/pictures/logo.jpg"))); // Open wenakota logo eka penweemt.
         stage.setScene(scene);
         stage.setResizable(false);  // Stage eke size eka change krgn bri kirimat
         stage.initStyle(StageStyle.UNDECORATED);  // Splash Screen eke athi button iwath kirimat
