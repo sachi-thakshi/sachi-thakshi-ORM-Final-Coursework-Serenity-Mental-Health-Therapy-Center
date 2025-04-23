@@ -34,7 +34,7 @@ public class ReceptionistDashvoardController {
 
     @FXML
     void logOut(ActionEvent event) {
-
+        navigateToPage("/view/LoginPage.fxml");
     }
 
     @FXML
@@ -44,7 +44,7 @@ public class ReceptionistDashvoardController {
 
     @FXML
     void paymentView(ActionEvent event) {
-        navigateToPage("/view/Payment.fxml");
+        navigateToPage("/view/PaymentPage.fxml");
 
     }
 

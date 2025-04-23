@@ -66,6 +66,6 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="rightPane" layoutX="413.0" layoutY="38.0" prefHeight="738.0" prefWidth="842.0" />
+      <Pane fx:id="pasetedReceptionistPane" layoutX="413.0" layoutY="38.0" prefHeight="738.0" prefWidth="842.0" />
    </children>
 </AnchorPane>
