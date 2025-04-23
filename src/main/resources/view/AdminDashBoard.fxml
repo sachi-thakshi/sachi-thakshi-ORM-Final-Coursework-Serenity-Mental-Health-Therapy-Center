@@ -17,7 +17,7 @@
             <Image url="@../pictures/ownerPage.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutX="26.0" layoutY="38.0" prefHeight="738.0" prefWidth="330.0" style="-fx-background-color: white;">
+         <VBox alignment="TOP_CENTER" layoutX="26.0" layoutY="38.0" prefHeight="738.0" prefWidth="330.0" style="-fx-background-color: white;">
          <children>
             <Label alignment="CENTER" prefHeight="73.0" prefWidth="366.0" text="Admin Page" textAlignment="CENTER" wrapText="true">
                <font>
@@ -74,6 +74,6 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="rightPane" layoutX="413.0" layoutY="38.0" prefHeight="738.0" prefWidth="842.0" />
+      <Pane fx:id="pasetedReceptionistPane" layoutX="413.0" layoutY="38.0" prefHeight="738.0" prefWidth="842.0" />
    </children>
 </AnchorPane>

@@ -37,12 +37,12 @@ public class AdminDashboardController {
 
     @FXML
     void logOut(ActionEvent event) {
-
+        navigateToPage("/view/LoginPage.fxml");
     }
 
     @FXML
     void paymentView(ActionEvent event) {
-        navigateToPage("/view/Payment.fxml");
+        navigateToPage("/view/PaymentPage.fxml");
     }
 
     @FXML
