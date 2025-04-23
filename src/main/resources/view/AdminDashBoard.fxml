@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchorPane" prefHeight="800.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.serenitymentalhealththerapycenter.controller.AdminDashboardController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/ownerPage.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" layoutX="26.0" layoutY="38.0" prefHeight="738.0" prefWidth="330.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" prefHeight="73.0" prefWidth="366.0" text="Admin Page" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Verdana Bold Italic" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnUserView" mnemonicParsing="false" onAction="#userView" prefHeight="43.0" prefWidth="270.0" style="-fx-background-color: #E53888; -fx-text-fill: white;" text="User">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="therapistView" mnemonicParsing="false" onAction="#therapistView" prefHeight="43.0" prefWidth="270.0" style="-fx-background-color: #E53888; -fx-text-fill: white;" text="Therapist">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnTherapyProgramView" mnemonicParsing="false" onAction="#therapyProgramView" prefHeight="43.0" prefWidth="275.0" style="-fx-background-color: #E53888; -fx-text-fill: white;" text="Therapy Program">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnPaymentView" mnemonicParsing="false" onAction="#paymentView" prefHeight="43.0" prefWidth="280.0" style="-fx-background-color: #E53888; -fx-text-fill: white;" text="Payment">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btntherapySessionView" mnemonicParsing="false" onAction="#therapySessionView" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #E53888; -fx-text-fill: white;" text="Therapy Session">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnLogOut" mnemonicParsing="false" onAction="#logOut" prefHeight="56.0" prefWidth="280.0" style="-fx-background-color: #E53888; -fx-text-fill: black;" text="Log Out">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Pane fx:id="rightPane" layoutX="413.0" layoutY="38.0" prefHeight="738.0" prefWidth="842.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="842.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.serenitymentalhealththerapycenter.controller.TherapistController">
+   <children>
+      <Label alignment="CENTER" layoutX="15.0" layoutY="25.0" prefHeight="35.0" prefWidth="820.0" text="Therapist Management" textFill="#991a55">
+         <font>
+            <Font name="Verdana Bold Italic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="101.0" text="Therapist ID ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="441.0" layoutY="93.0" prefHeight="20.0" prefWidth="105.0" text="Name ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="173.0" prefHeight="20.0" prefWidth="124.0" text="Specialization ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="216.0" text="Availability ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="437.0" layoutY="173.0" prefHeight="20.0" prefWidth="78.0" text="Gmail ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="437.0" layoutY="133.0" prefHeight="20.0" prefWidth="113.0" text="Contact ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="133.0" prefHeight="20.0" prefWidth="143.0" text="Assigned Program ">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtTherapistId" layoutX="140.0" layoutY="90.0" prefHeight="26.0" prefWidth="176.0" />
+      <JFXTextField fx:id="txtTherapistName" layoutX="504.0" layoutY="96.0" prefHeight="26.0" prefWidth="307.0" />
+      <JFXTextField fx:id="txtTherapistContact" layoutX="511.0" layoutY="130.0" prefHeight="26.0" prefWidth="206.0" />
+      <JFXTextField fx:id="txtTherapistGmail" layoutX="504.0" layoutY="170.0" prefHeight="26.0" prefWidth="318.0" />
+      <JFXButton fx:id="btnSave" layoutX="29.0" layoutY="316.0" onAction="#saveOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="210.0" layoutY="317.0" onAction="#deleteOnAction" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnSearch" layoutX="330.0" layoutY="96.0" onAction="#searchOnAction" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" layoutX="395.0" layoutY="317.0" onAction="#updateOnAction" prefHeight="30.0" prefWidth="136.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnRefresh" layoutX="677.0" layoutY="317.0" onAction="#refreshOnAction" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbAssignedProgram" layoutX="172.0" layoutY="130.0" prefHeight="26.0" prefWidth="235.0" />
+      <JFXComboBox fx:id="cmbSpecialization" layoutX="150.0" layoutY="170.0" prefHeight="26.0" prefWidth="255.0" />
+      <JFXComboBox fx:id="cmbAvailability" layoutX="125.0" layoutY="212.0" prefHeight="26.0" prefWidth="280.0" />
+      <TableView fx:id="therapistTable" layoutX="33.0" layoutY="378.0" onMouseClicked="#clickOnAction" prefHeight="330.0" prefWidth="791.0">
+         <columns>
+            <TableColumn fx:id="colTherapistId" prefWidth="89.59997940063477" text="Therapist ID" />
+            <TableColumn fx:id="colName" prefWidth="140.7999725341797" text="Name" />
+            <TableColumn fx:id="colSpecialization" prefWidth="193.5999755859375" text="Specialization " />
+            <TableColumn fx:id="colContact" prefWidth="88.79998779296875" text="Contact" />
+            <TableColumn fx:id="colStatus" prefWidth="149.60003662109375" text="Status" />
+            <TableColumn fx:id="colAssignedProgram" prefWidth="127.99993896484375" text="Assigned Program" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

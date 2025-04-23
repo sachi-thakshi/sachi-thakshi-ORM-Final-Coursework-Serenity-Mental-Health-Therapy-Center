@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="842.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.serenitymentalhealththerapycenter.controller.UserController">
+   <children>
+      <Label alignment="CENTER" layoutX="19.0" layoutY="27.0" prefHeight="35.0" prefWidth="801.0" text="User Management " textFill="#991a55">
+         <font>
+            <Font name="Verdana Bold Italic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="105.0" text="User ID ">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="155.0" prefHeight="20.0" prefWidth="105.0" text="Role ">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="209.0" prefHeight="20.0" prefWidth="124.0" text="User Name ">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtUserId" layoutX="120.0" layoutY="102.0" prefHeight="26.0" prefWidth="303.0" />
+      <JFXButton fx:id="btnSearch" layoutX="437.0" layoutY="109.0" onAction="#searchOnAction" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold Italic" size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="txtUsername" layoutX="152.0" layoutY="206.0" prefHeight="26.0" prefWidth="485.0" />
+      <JFXButton fx:id="btnDelete" layoutX="35.0" layoutY="274.0" onAction="#deleteOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" layoutX="235.0" layoutY="274.0" onAction="#updateOnAction" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnRefresh" layoutX="647.0" layoutY="274.0" onAction="#refreshOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbUserRole" layoutX="89.0" layoutY="152.0" prefHeight="26.0" prefWidth="358.0" promptText="Select Role" />
+      <TableView fx:id="tblUsers" layoutX="35.0" layoutY="352.0" onMouseClicked="#tableClickOnAction" prefHeight="330.0" prefWidth="775.0">
+         <columns>
+            <TableColumn fx:id="colUserId" prefWidth="232.79999923706055" text="User ID" />
+            <TableColumn fx:id="colUsername" prefWidth="308.0" text="Username" />
+            <TableColumn fx:id="colRole" prefWidth="233.60003662109375" text="Role" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="btnSave" layoutX="420.0" layoutY="274.0" onAction="#saveOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

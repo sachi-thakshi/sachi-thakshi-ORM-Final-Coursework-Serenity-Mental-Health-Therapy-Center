@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: #FFB8E0;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.serenitymentalhealththerapycenter.controller.LoginPageController">
+   <children>
+      <ImageView fitHeight="336.0" fitWidth="525.0" layoutX="515.0" layoutY="91.0" pickOnBounds="true">
+         <image>
+            <Image url="@../pictures/loginPage.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="437.0" layoutY="448.0" prefHeight="312.0" prefWidth="681.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 30;">
+         <children>
+            <Label layoutX="194.0" layoutY="14.0" text="Please Enter Your Details ..." textFill="#e53888">
+               <font>
+                  <Font name="Verdana" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="76.0" text="User Name :">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtUserName" layoutX="153.0" layoutY="74.0" prefHeight="25.0" prefWidth="364.0" />
+            <Label layoutX="29.0" layoutY="136.0" text="Password :">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtPassword" layoutX="153.0" layoutY="134.0" onAction="#enterPasswordOnAction" prefHeight="25.0" prefWidth="364.0" />
+            <ImageView fx:id="iconHide" fitHeight="35.0" fitWidth="38.0" layoutX="537.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/closed-eye.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="linkFogetPassword" layoutX="411.0" layoutY="164.0" onAction="#fogetPassword" text="Forgot Password ?" textFill="#df1414" />
+            <JFXButton fx:id="btnSingIn" layoutX="254.0" layoutY="209.0" onAction="#signIn" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #e53888; -fx-border-radius: 35; -fx-cursor: hand;" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="204.0" layoutY="262.0" prefHeight="17.0" prefWidth="168.0" text="Don't have an Account ?">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="linkSignIn" layoutX="372.0" layoutY="258.0" onAction="#signUp" text="Sign Up" textFill="#e53888">
+               <font>
+                  <Font name="Verdana Bold Italic" size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <Label layoutX="618.0" layoutY="31.0" prefHeight="48.0" prefWidth="344.0" text="Welcome Back">
+         <font>
+            <Font name="Verdana Bold Italic" size="38.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

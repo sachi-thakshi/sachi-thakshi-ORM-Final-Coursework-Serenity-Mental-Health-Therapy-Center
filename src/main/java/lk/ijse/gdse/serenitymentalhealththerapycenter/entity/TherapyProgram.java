@@ -1,0 +1,44 @@
+
+package lk.ijse.gdse.serenitymentalhealththerapycenter.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "therapy_programs")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class TherapyProgram {
+
+    @Id
+    @Column(name = "program_id", length = 10)
+    private String programId;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(nullable = false, length = 50)
+    private String duration;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal fee;
+
+    @Column(nullable = false)
+    private String therapist;
+
+    @Column(length = 500)
+    private String description;
+
+    @OneToMany(mappedBy = "therapyProgram", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TherapySession> therapySessions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "therapyProgram", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Payment> payments = new ArrayList<>();
+}
