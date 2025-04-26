@@ -31,13 +31,13 @@
          </font>
       </Label>
       <JFXTextField fx:id="txtPatientId" layoutX="150.0" layoutY="103.0" prefHeight="26.0" prefWidth="203.0" />
-      <JFXButton fx:id="btnSearch" layoutX="368.0" layoutY="103.0" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="btnSearch" layoutX="368.0" layoutY="103.0" onMouseClicked="#searchOnAction" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Search" textFill="WHITE">
          <font>
             <Font name="Verdana Bold Italic" size="11.0" />
          </font>
       </JFXButton>
       <JFXTextField fx:id="txtPatientName" layoutX="144.0" layoutY="139.0" prefHeight="26.0" prefWidth="549.0" />
-      <JFXTextField fx:id="txtMedicalHistory" layoutX="150.0" layoutY="236.0" prefHeight="26.0" prefWidth="603.0" />
+      <JFXTextField fx:id="txtMedicalHistory" layoutX="150.0" layoutY="258.0" prefHeight="26.0" prefWidth="603.0" />
       <JFXTextField fx:id="txtPatientContact" layoutX="147.0" layoutY="183.0" prefHeight="26.0" prefWidth="277.0" />
       <JFXButton fx:id="btnSave" layoutX="405.0" layoutY="332.0" onAction="#saveOnAction" prefHeight="20.0" prefWidth="114.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Save" textFill="WHITE">
          <font>
@@ -59,18 +59,25 @@
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </JFXButton>
-      <Label layoutX="33.0" layoutY="239.0" prefHeight="20.0" prefWidth="143.0" text="Medical History ">
+      <Label layoutX="32.0" layoutY="271.0" prefHeight="20.0" prefWidth="114.0" text="Medical History ">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
       <TableView fx:id="tblPatients" layoutX="26.0" layoutY="406.0" onMouseClicked="#tableClickOnAction" prefHeight="300.0" prefWidth="783.0">
          <columns>
-            <TableColumn fx:id="colPatientId" prefWidth="179.99999618530273" text="Patient ID" />
-            <TableColumn fx:id="colName" prefWidth="172.8000030517578" text="Name" />
-            <TableColumn fx:id="colContact" prefWidth="152.0" text="Contact" />
-            <TableColumn fx:id="colMedicalHistory" prefWidth="274.4000244140625" text="Medical History" />
+            <TableColumn fx:id="colPatientId" prefWidth="124.80002212524414" text="Patient ID" />
+            <TableColumn fx:id="colName" prefWidth="180.79994201660156" text="Name" />
+            <TableColumn fx:id="colContact" prefWidth="142.4000244140625" text="Contact" />
+            <TableColumn fx:id="colAge" prefWidth="93.5999755859375" text="Age" />
+            <TableColumn fx:id="colMedicalHistory" prefWidth="241.5999755859375" text="Medical History" />
          </columns>
       </TableView>
+      <Label layoutX="32.0" layoutY="222.0" prefHeight="20.0" prefWidth="114.0" text="Age">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtAge" layoutX="150.0" layoutY="219.0" prefHeight="26.0" prefWidth="42.0" />
    </children>
 </AnchorPane>

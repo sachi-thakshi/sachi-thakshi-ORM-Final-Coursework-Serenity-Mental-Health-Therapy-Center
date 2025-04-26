@@ -43,6 +43,10 @@ public class PatientController {
     @FXML
     private TableColumn<PatientTM , String> colPatientId;
 
+
+    @FXML
+    private TableColumn<PatientTM, Integer> colAge;
+
     @FXML
     private ImageView imgSearch;
 
@@ -59,6 +63,9 @@ public class PatientController {
     private TextField txtPatientId;
 
     @FXML
+    private JFXTextField txtAge;
+
+    @FXML
     private TextField txtPatientName;
 
     private final PatientBO PATIENTBO = (PatientBO) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
@@ -67,6 +74,10 @@ public class PatientController {
         try {
             loadTableData();
             visibleData();
+            refreshPage();
+
+            String nextPatientId = PATIENTBO.getNextPatientId();
+            txtPatientId.setText(nextPatientId);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -79,8 +90,10 @@ public class PatientController {
             PatientTM patientTM = new PatientTM(
                     patientDTO.getId(),
                     patientDTO.getName(),
-                    patientDTO.getMedicalHistory(),
-                    patientDTO.getContactNumber()
+                    patientDTO.getContactNumber(),
+                    patientDTO.getAge(),
+                    patientDTO.getMedicalHistory()
+
             );
             patientTMS.add(patientTM);
         }
@@ -90,6 +103,7 @@ public class PatientController {
         colPatientId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medicalHistory"));
     }
 
@@ -111,7 +125,7 @@ public class PatientController {
                     if (isDeleted) {
                         new Alert(Alert.AlertType.INFORMATION, "Patient deleted successfully!").show();
                         loadTableData();
-//                        refrashPage();
+                        refreshPage();
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Failed to delete the patient!").show();
                     }
@@ -125,9 +139,21 @@ public class PatientController {
         }
     }
 
+    public void refreshPage(){
+        txtPatientId.setText("");
+        txtPatientName.setText("");
+        txtPatientContact.setText("");
+        txtAge.setText("");
+        txtMedicalHistory.setText("");
+    }
     @FXML
     void refreshOnAction(ActionEvent event) {
-
+        try {
+            refreshPage();
+            loadTableData();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -135,35 +161,88 @@ public class PatientController {
         try {
             String patientId = txtPatientId.getText();
             String name = txtPatientName.getText();
+            String contactStr = txtPatientContact.getText();
+            String ageStr = txtAge.getText();
             String medicalHistory = txtMedicalHistory.getText();
-            int contact = Integer.parseInt(txtPatientContact.getText());
 
+            // === REGEX PATTERNS ===
+            String nameRegex = "^[A-Za-z ]{2,50}$";
+            String contactRegex = "^(070|071|072|074|075|076|077|078)\\d{7}$"; // Sri Lankan format
+            String ageRegex = "^[1-9][0-9]{0,2}$";
 
-            if (!patientId.isEmpty() && !name.isEmpty() && !medicalHistory.isEmpty() && contact > 0) {
+            // === VALIDATE ===
+            if (!name.matches(nameRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid name! Only letters & spaces allowed (2–50 characters).").show();
+                return;
+            }
 
-                PatientDTO patientDTO = new PatientDTO(patientId, name, medicalHistory,contact);
+            if (!contactStr.matches(contactRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid contact number! Must be a valid Sri Lankan mobile number (e.g., 0771234567).").show();
+                return;
+            }
 
+            if (!ageStr.matches(ageRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid age! Enter a number between 1 and 999.").show();
+                return;
+            }
+
+            int contact = Integer.parseInt(contactStr);
+            int age = Integer.parseInt(ageStr);
+
+            if (!patientId.isEmpty() && !medicalHistory.isEmpty()) {
+                PatientDTO patientDTO = new PatientDTO(patientId, name, contact, age, medicalHistory);
                 boolean isSaved = PATIENTBO.savePatient(patientDTO);
+
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "Patient Saved Successfully!").show();
                     loadTableData();
-//                    refrashPage();
+                    refreshPage();
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Failed to Save Patient!").show();
                 }
             } else {
-                new Alert(Alert.AlertType.WARNING, "Please fill all the fields with valid data!").show();
+                new Alert(Alert.AlertType.WARNING, "Please fill all the fields!").show();
             }
-        } catch (NumberFormatException e) {
-            new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for Age and Contact Number!").show();
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
         }
     }
 
     @FXML
     void searchOnAction(MouseEvent event) {
+        String patientId = txtPatientId.getText();
 
+        if (!patientId.isEmpty()) {
+            try {
+                PatientDTO patientDTO = PATIENTBO.searchPatient(patientId);
+
+                if (patientDTO != null) {
+                    txtPatientName.setText(patientDTO.getName());
+                    txtPatientContact.setText(String.valueOf(patientDTO.getContactNumber()));
+                    txtAge.setText(String.valueOf(patientDTO.getAge()));
+                    txtMedicalHistory.setText(patientDTO.getMedicalHistory());
+
+                    ObservableList<PatientTM> patientTMS = FXCollections.observableArrayList();
+
+                    PatientTM patientTM = new PatientTM(
+                            patientDTO.getId(),
+                            patientDTO.getName(),
+                            patientDTO.getContactNumber(),
+                            patientDTO.getAge(),
+                            patientDTO.getMedicalHistory()
+                    );
+                    patientTMS.add(patientTM);
+                    tblPatients.setItems(patientTMS);
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Patient Not Found!").show();
+                }
+            } catch (Exception e) {
+//                e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, "An error occurred while searching!").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please enter a Patient ID to search!").show();
+        }
     }
 
     @FXML
@@ -173,8 +252,9 @@ public class PatientController {
         if (selectedPatient != null) {
             txtPatientId.setText(selectedPatient.getId());
             txtPatientName.setText(selectedPatient.getName());
-            txtMedicalHistory.setText(selectedPatient.getMedicalHistory());
             txtPatientContact.setText(String.valueOf(selectedPatient.getContactNumber()));
+            txtAge.setText(String.valueOf(selectedPatient.getAge()));
+            txtMedicalHistory.setText(selectedPatient.getMedicalHistory());
         }
     }
 
@@ -183,29 +263,51 @@ public class PatientController {
         try {
             String patientId = txtPatientId.getText();
             String name = txtPatientName.getText();
+            String contactStr = txtPatientContact.getText();
+            String ageStr = txtAge.getText();
             String medicalHistory = txtMedicalHistory.getText();
-            int contact = Integer.parseInt(txtPatientContact.getText());
 
+            // === REGEX PATTERNS ===
+            String nameRegex = "^[A-Za-z ]{2,50}$";
+            String contactRegex = "^(070|071|072|074|075|076|077|078)\\d{7}$"; // Sri Lankan format
+            String ageRegex = "^[1-9][0-9]{0,2}$";
 
-            if (!patientId.isEmpty() && !name.isEmpty() && !medicalHistory.isEmpty() && contact > 0) {
+            // === VALIDATION ===
+            if (!name.matches(nameRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid name! Only letters & spaces allowed (2–50 characters).").show();
+                return;
+            }
 
-                PatientDTO patientDTO = new PatientDTO(patientId, name, medicalHistory,contact);
+            if (!contactStr.matches(contactRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid contact number! Must be a valid Sri Lankan number (e.g., 0771234567).").show();
+                return;
+            }
 
-                boolean isSaved = PATIENTBO.updatePatient(patientDTO);
-                if (isSaved) {
-                    new Alert(Alert.AlertType.INFORMATION, "Patient update Successfully!").show();
+            if (!ageStr.matches(ageRegex)) {
+                new Alert(Alert.AlertType.WARNING, "Invalid age! Enter a number between 1 and 999.").show();
+                return;
+            }
+
+            int contact = Integer.parseInt(contactStr);
+            int age = Integer.parseInt(ageStr);
+
+            if (!patientId.isEmpty() && !medicalHistory.isEmpty()) {
+                PatientDTO patientDTO = new PatientDTO(patientId, name, contact, age, medicalHistory);
+                boolean isUpdated = PATIENTBO.updatePatient(patientDTO);
+
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.INFORMATION, "Patient updated successfully!").show();
                     loadTableData();
-//                    refrashPage();
+                    refreshPage();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Failed to update Patient!").show();
+                    new Alert(Alert.AlertType.ERROR, "Failed to update patient!").show();
                 }
             } else {
-                new Alert(Alert.AlertType.WARNING, "Please fill all the fields with valid data!").show();
+                new Alert(Alert.AlertType.WARNING, "Please fill all fields!").show();
             }
-        } catch (NumberFormatException e) {
-            new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for Age and Contact Number!").show();
+
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage()).show();
         }
     }
 

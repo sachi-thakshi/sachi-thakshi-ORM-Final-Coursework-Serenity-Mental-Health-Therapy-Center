@@ -21,8 +21,10 @@ public class PatientBOImpl implements PatientBO {
             patientDTOS.add(new PatientDTO(
                     patient.getId(),
                     patient.getName(),
-                    patient.getMedicalHistory(),
-                    patient.getContactNumber()
+                    patient.getContactNumber(),
+                    patient.getAge(),
+                    patient.getMedicalHistory()
+
             ));
         }
         return patientDTOS;
@@ -34,7 +36,8 @@ public class PatientBOImpl implements PatientBO {
                patientDTO.getId(),
                 patientDTO.getName(),
                 patientDTO.getMedicalHistory(),
-                patientDTO.getContactNumber()
+                patientDTO.getContactNumber(),
+                patientDTO.getAge()
         ));
     }
 
@@ -44,12 +47,34 @@ public class PatientBOImpl implements PatientBO {
                 patientDTO.getId(),
                 patientDTO.getName(),
                 patientDTO.getMedicalHistory(),
-                patientDTO.getContactNumber()
+                patientDTO.getContactNumber(),
+                patientDTO.getAge()
         ));
     }
 
     @Override
     public boolean deletePatient(String patientId) throws Exception {
         return patientDAO.delete(patientId);
+    }
+
+    @Override
+    public String getNextPatientId() throws Exception {
+        return patientDAO.getNextPatientId();
+    }
+
+    @Override
+    public PatientDTO searchPatient(String patientID) throws Exception {
+        Patient patient = patientDAO.search(patientID);
+        if (patient == null) {
+            return null;
+        }
+        return new PatientDTO(
+                patient.getId(),
+                patient.getName(),
+                patient.getContactNumber(),
+                patient.getAge(),
+                patient.getMedicalHistory()
+
+        );
     }
 }

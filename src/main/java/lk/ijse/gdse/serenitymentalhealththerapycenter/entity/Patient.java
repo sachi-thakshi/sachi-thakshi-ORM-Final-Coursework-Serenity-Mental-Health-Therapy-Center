@@ -21,6 +21,9 @@ public class Patient {
     @Column(nullable = false, length = 100)
     private String name;
 
+    @Column(nullable = false, length = 15)
+    private int age;
+
     @Column(length = 1000)
     private String medicalHistory;
 
@@ -33,10 +36,12 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Payment> payments = new ArrayList<>();
 
-    public Patient(String id, String name, String medicalHistory, int contactNumber) {
+    public Patient(String id, String name, String medicalHistory, int contactNumber, int age) {
         this.id = id;
         this.name = name;
-        this.medicalHistory = medicalHistory;
+        this.age = age;
         this.contactNumber = contactNumber;
+        this.medicalHistory = medicalHistory;
+
     }
 }

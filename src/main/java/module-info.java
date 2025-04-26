@@ -14,7 +14,7 @@ module lk.ijse.gdse.serenitymentalhealththerapycenter {
 
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.config to jakarta.persistence;
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.entity to org.hibernate.orm.core;
-    opens lk.ijse.gdse.serenitymentalhealththerapycenter.dto.tm to java.base;
+    opens lk.ijse.gdse.serenitymentalhealththerapycenter.dto.tm to javafx.base;
 
     opens lk.ijse.gdse.serenitymentalhealththerapycenter to javafx.fxml;
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.controller to javafx.fxml;

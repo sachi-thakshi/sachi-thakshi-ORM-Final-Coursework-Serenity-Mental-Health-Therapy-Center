@@ -32,11 +32,17 @@ public class Therapist {
     private int contactNumber;
 
     @Column(length = 100)
-    private String email;
-
-    @Column(length = 100)
     private String assignedProgram ;
 
     @OneToMany(mappedBy = "therapist", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TherapySession> therapySessions = new ArrayList<>();
+
+    public Therapist(String therapistId, String therapistName, String specialization, String availability, int contact, String program) {
+        this.therapistId = therapistId;
+        this.name = therapistName;
+        this.specialization = specialization;
+        this.availability = availability;
+        this.contactNumber = contact;
+        this.assignedProgram = program;
+    }
 }

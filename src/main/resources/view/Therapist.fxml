@@ -31,12 +31,7 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="216.0" text="Availability ">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="437.0" layoutY="173.0" prefHeight="20.0" prefWidth="78.0" text="Gmail ">
+      <Label layoutX="36.0" layoutY="209.0" text="Availability ">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -51,10 +46,9 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtTherapistId" layoutX="140.0" layoutY="90.0" prefHeight="26.0" prefWidth="176.0" />
+      <JFXTextField fx:id="txtTherapistId" layoutX="140.0" layoutY="90.0" onAction="#enterOnAction" prefHeight="26.0" prefWidth="176.0" />
       <JFXTextField fx:id="txtTherapistName" layoutX="504.0" layoutY="96.0" prefHeight="26.0" prefWidth="307.0" />
       <JFXTextField fx:id="txtTherapistContact" layoutX="511.0" layoutY="130.0" prefHeight="26.0" prefWidth="206.0" />
-      <JFXTextField fx:id="txtTherapistGmail" layoutX="504.0" layoutY="170.0" prefHeight="26.0" prefWidth="318.0" />
       <JFXButton fx:id="btnSave" layoutX="29.0" layoutY="316.0" onAction="#saveOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
@@ -82,14 +76,14 @@
       </JFXButton>
       <JFXComboBox fx:id="cmbAssignedProgram" layoutX="172.0" layoutY="130.0" prefHeight="26.0" prefWidth="235.0" />
       <JFXComboBox fx:id="cmbSpecialization" layoutX="150.0" layoutY="170.0" prefHeight="26.0" prefWidth="255.0" />
-      <JFXComboBox fx:id="cmbAvailability" layoutX="125.0" layoutY="212.0" prefHeight="26.0" prefWidth="280.0" />
+      <JFXComboBox fx:id="cmbAvailability" layoutX="129.0" layoutY="205.0" prefHeight="26.0" prefWidth="280.0" />
       <TableView fx:id="therapistTable" layoutX="33.0" layoutY="378.0" onMouseClicked="#clickOnAction" prefHeight="330.0" prefWidth="791.0">
          <columns>
             <TableColumn fx:id="colTherapistId" prefWidth="89.59997940063477" text="Therapist ID" />
             <TableColumn fx:id="colName" prefWidth="140.7999725341797" text="Name" />
             <TableColumn fx:id="colSpecialization" prefWidth="193.5999755859375" text="Specialization " />
             <TableColumn fx:id="colContact" prefWidth="88.79998779296875" text="Contact" />
-            <TableColumn fx:id="colStatus" prefWidth="149.60003662109375" text="Status" />
+            <TableColumn fx:id="colAvailability" prefWidth="149.60003662109375" text="Availability" />
             <TableColumn fx:id="colAssignedProgram" prefWidth="127.99993896484375" text="Assigned Program" />
          </columns>
       </TableView>

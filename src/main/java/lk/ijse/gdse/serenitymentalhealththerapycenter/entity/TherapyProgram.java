@@ -41,4 +41,13 @@ public class TherapyProgram {
 
     @OneToMany(mappedBy = "therapyProgram", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Payment> payments = new ArrayList<>();
+
+    public TherapyProgram(String therapyId, String programName, String duration, BigDecimal fee, String therapist, String description) {
+        this.programId = therapyId;
+        this.name = programName;
+        this.duration = duration;
+        this.fee = fee;
+        this.therapist = therapist;
+        this.description = description;
+    }
 }

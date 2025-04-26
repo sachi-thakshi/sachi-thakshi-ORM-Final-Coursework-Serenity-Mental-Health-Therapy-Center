@@ -56,4 +56,16 @@ public class TherapySession {
     @ManyToOne
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
+
+    public TherapySession(String sessionId, String patientId, String patientName, String therapistId, String program, LocalDate sessionDate, LocalTime time, String duration, String status) {
+        this.sessionId = sessionId;
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.therapistId = therapistId;
+        this.program = program;
+        this.sessionDate = sessionDate;
+        this.time = time;
+        this.duration = duration;
+        this.status = status;
+    }
 }

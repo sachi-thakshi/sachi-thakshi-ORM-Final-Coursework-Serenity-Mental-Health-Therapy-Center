@@ -118,10 +118,4 @@ public class RegistrationPageController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    void showHide(MouseEvent event) {
-
-    }
-
 }

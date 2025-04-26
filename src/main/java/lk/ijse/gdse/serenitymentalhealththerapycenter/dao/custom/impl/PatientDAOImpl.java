@@ -2,6 +2,7 @@ package lk.ijse.gdse.serenitymentalhealththerapycenter.dao.custom.impl;
 
 import lk.ijse.gdse.serenitymentalhealththerapycenter.config.FactoryConfiguration;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.dao.custom.PatientDAO;
+import lk.ijse.gdse.serenitymentalhealththerapycenter.dto.PatientDTO;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.entity.Patient;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -110,5 +111,59 @@ public class PatientDAOImpl implements PatientDAO {
     }    @Override
     public void setSession(Session session) throws Exception {
 
+    }
+
+    @Override
+    public PatientDTO getPatient(String patientId) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Patient patient = session.createQuery(
+                            "FROM Patient WHERE id = :patientId", Patient.class)
+                    .setParameter("patientId", patientId)
+                    .uniqueResult();
+
+            transaction.commit();
+            session.close();
+
+            if (patient != null) {
+                return new PatientDTO(
+                        patient.getId(),
+                        patient.getName(),
+                        patient.getContactNumber(),
+                        patient.getAge(),
+                        patient.getMedicalHistory()
+
+                );
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            transaction.rollback();
+            session.close();
+            throw e;
+        }
+    }
+
+    @Override
+    public String getNextPatientId() {
+        try (Session session = FactoryConfiguration.getInstance().getSession()) {
+
+            Integer maxNum = (Integer) session.createQuery(
+                    "SELECT MAX(CAST(SUBSTRING(p.id, 5) AS int)) " +
+                            "FROM Patient p " +
+                            "WHERE p.id LIKE 'P%' " +
+                            "AND LENGTH(p.id) = 6"
+            ).uniqueResult();
+
+            return maxNum != null ?
+                    String.format("P%03d", maxNum + 1) :
+                    "P001";
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to generate next ID", e);
+        }
     }
 }

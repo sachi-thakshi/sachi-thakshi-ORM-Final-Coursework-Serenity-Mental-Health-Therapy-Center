@@ -34,7 +34,12 @@ public class ReceptionistDashvoardController {
 
     @FXML
     void logOut(ActionEvent event) {
-        navigateToPage("/view/LoginPage.fxml");
+        try {
+            mainAnchorPane.getChildren().clear();
+            mainAnchorPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

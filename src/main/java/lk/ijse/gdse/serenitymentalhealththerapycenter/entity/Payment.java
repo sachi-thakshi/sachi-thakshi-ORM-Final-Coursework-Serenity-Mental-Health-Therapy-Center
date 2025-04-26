@@ -49,4 +49,17 @@ public class Payment {
     @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "program_id", nullable = false)
     private TherapyProgram therapyProgram;
+
+    public Payment(String id, String sessionId, String patientName, BigDecimal amount, String paymentMethod, LocalDate paymentDate, String status, BigDecimal paidAmount, BigDecimal balance) {
+
+        this.id = id;
+        this.sessionId = sessionId;
+        this.patientName = patientName;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+        this.paymentDate = paymentDate;
+        this.status = status;
+        this.paidAmount = paidAmount;
+        this.balance = balance;
+    }
 }

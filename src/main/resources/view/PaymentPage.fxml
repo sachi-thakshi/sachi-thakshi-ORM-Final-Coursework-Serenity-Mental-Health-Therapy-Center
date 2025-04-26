@@ -70,7 +70,7 @@
       </JFXButton>
       <JFXTextField fx:id="txtPatientName" layoutX="160.0" layoutY="170.0" prefHeight="26.0" prefWidth="247.0" />
       <JFXTextField fx:id="txtAmount" layoutX="167.0" layoutY="204.0" prefHeight="26.0" prefWidth="228.0" />
-      <JFXTextField fx:id="txtPayedAmound" layoutX="561.0" layoutY="170.0" prefHeight="26.0" prefWidth="262.0" />
+      <JFXTextField fx:id="txtPayedAmound" layoutX="561.0" layoutY="170.0" onAction="#calOnAction" prefHeight="26.0" prefWidth="262.0" />
       <JFXComboBox fx:id="cmbPaymentMethod" layoutX="173.0" layoutY="241.0" prefHeight="26.0" prefWidth="222.0" />
       <JFXButton fx:id="btnRefresh" layoutX="29.0" layoutY="316.0" onAction="#refreshOnAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E53888; -fx-border-radius: 20;" text="Refresh" textFill="WHITE">
          <font>
@@ -113,6 +113,6 @@
             <TableColumn fx:id="colBalance" prefWidth="117.5999755859375" text="Balance" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtSessionId" layoutX="140.0" layoutY="129.0" prefHeight="26.0" prefWidth="190.0" />
+      <JFXTextField fx:id="txtSessionId" layoutX="133.0" layoutY="129.0" prefHeight="26.0" prefWidth="203.0" />
    </children>
 </AnchorPane>

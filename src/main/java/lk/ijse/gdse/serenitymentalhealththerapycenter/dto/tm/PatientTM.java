@@ -13,6 +13,7 @@ public class PatientTM {
 
     private String id;
     private String name;
-    private String medicalHistory;
     private int contactNumber;
+    private int age;
+    private String medicalHistory;
 }
