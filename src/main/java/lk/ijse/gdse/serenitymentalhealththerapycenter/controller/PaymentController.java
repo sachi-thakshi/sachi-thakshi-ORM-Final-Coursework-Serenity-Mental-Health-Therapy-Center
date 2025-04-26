@@ -1,7 +1,6 @@
 package lk.ijse.gdse.serenitymentalhealththerapycenter.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.bo.BOFactory;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.bo.custom.PaymentBO;
-import lk.ijse.gdse.serenitymentalhealththerapycenter.dao.DAOFactory;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.dao.custom.TherapySessionDAO;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.dao.custom.impl.TherapySessionDAOImpl;
 import lk.ijse.gdse.serenitymentalhealththerapycenter.dto.PaymentDTO;

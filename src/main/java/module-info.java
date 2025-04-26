@@ -11,7 +11,6 @@ module lk.ijse.gdse.serenitymentalhealththerapycenter {
     requires jbcrypt;
     requires java.management;
 
-
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.config to jakarta.persistence;
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.entity to org.hibernate.orm.core;
     opens lk.ijse.gdse.serenitymentalhealththerapycenter.dto.tm to javafx.base;
